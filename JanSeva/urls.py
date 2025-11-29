@@ -10,6 +10,12 @@ urlpatterns = [
     # It tells Django: "Send any link starting with 'api/home/' to the home app"
     path('api/home/', include('home.urls')),
     # -----------------------------
+    
+    # About Us page
+    path('aboutus/', include('aboutus.urls')),
+    
+    # About Us API
+    path('api/aboutus/', include('aboutus.api_urls')),
 ]
 
 if settings.DEBUG:

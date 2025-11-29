@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - JanSeva</title>
+    <link rel="stylesheet" href="{% static 'aboutus/about.css' %}">
+</head>
+<body>
+    <div class="about-container">
+        <!-- Project Header -->
+        <section class="project-header">
+            <h1 id="project-name">Loading...</h1>
+            <p class="project-description" id="project-description"></p>
+            <div class="project-meta">
+                <span class="version-badge" id="version-badge"></span>
+                <span class="date-badge" id="date-badge"></span>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2>Key Features</h2>
+            <div class="features-grid" id="features-grid">
+                <!-- Features will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="tech-stack-section">
+            <h2>Technology Stack</h2>
+            <div class="tech-details" id="tech-details">
+                <!-- Tech stack will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Collaborators Section -->
+        <section class="collaborators-section">
+            <h2>Meet Our Team</h2>
+            <p class="team-intro">
+                Our diverse team of talented professionals working together to build JanSeva
+            </p>
+            <div class="collaborators-grid" id="collaborators-grid">
+                <!-- Collaborators will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="about-footer">
+            <p>© 2025 JanSeva. Making civic engagement easier for everyone.</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="error-message" class="error-message" style="display: none;">
+        <h2>⚠️ Error</h2>
+        <p id="error-text"></p>
+    </div>
+
+    <script src="{% static 'aboutus/about.js' %}"></script>
+</body>
+</html>
