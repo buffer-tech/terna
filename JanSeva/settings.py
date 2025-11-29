@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',      
+    'corsheaders',        
+    'feed',
+]
+
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -127,6 +134,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+import os
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:8000",
