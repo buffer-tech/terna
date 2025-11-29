@@ -1,0 +1,69 @@
+{% extends "public_feed/base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">Public Issue Feed</h1>
+
+{% if issues %}
+    {% for issue in issues %}
+    <div class="issue-card">
+
+        {# Image #}
+        {% if issue.image %}
+        <img src="{{ issue.image.url }}" alt="{{ issue.title }}" class="issue-image">
+        {% endif %}
+
+        {# Title #}
+        <h2 class="issue-title">{{ issue.title }}</h2>
+
+        {# Description #}
+        <p class="issue-description">
+            {{ issue.description }}
+        </p>
+
+        {# Location #}
+        <p class="issue-location">
+            📍 {{ issue.location }}
+        </p>
+
+        {# Status with color #}
+        <p class="issue-status
+            {% if issue.status == 'Pending' %}status-pending
+            {% elif issue.status == 'In Progress' %}status-in-progress
+            {% elif issue.status == 'Resolved' %}status-resolved
+            {% endif %}
+        ">
+            Status: {{ issue.status }}
+        </p>
+
+        {# Type + Department #}
+        <p class="issue-meta">
+            Type: {{ issue.tag }} • Dept: {{ issue.organisation }}
+        </p>
+
+        {# Reporter (user who posted) #}
+        <p class="issue-reporter">
+            Posted by {{ issue.reported_by.username }}
+        </p>
+
+        {# Upvote + time row #}
+        <div class="issue-bottom-row">
+            <form method="post" action="/api/issues/{{ issue.id }}/upvote/">
+                {% csrf_token %}
+                <button type="submit" class="upvote-button">
+                    👍 Upvote ({{ issue.upvotes }})
+                </button>
+            </form>
+
+            <span class="issue-time">
+                Posted at {{ issue.created_at }}
+            </span>
+        </div>
+
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No issues yet. Be the first to report one!</p>
+{% endif %}
+
+{% endblock %}
